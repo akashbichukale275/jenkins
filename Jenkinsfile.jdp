@@ -21,6 +21,7 @@ pipeline {
         stage('QualityGate') {
             steps {
                 waitForQualityGate abortPipeline: true
+                serverUrl: 'http:/172.31.60.224:9000'
             }
         } 
         stage('Deploy') {
