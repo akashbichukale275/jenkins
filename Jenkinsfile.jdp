@@ -17,8 +17,11 @@ pipeline {
                 sh '/opt/maven/bin/mvn sonar:sonar'
                 }
             }
-        } 
-                stage('Deploy') {
+        }
+        stage('QualityGate') {
+             waitForQualityGate abortPipeline: true
+        }
+         stage('Deploy') {
             steps {
                 echo '"Deploy successfully"'
             }
