@@ -21,7 +21,6 @@ pipeline {
         stage('QualityGate') {
             steps {
                 waitForQualityGate abortPipeline: true
-                sh "curl -X POST $webhookURL -d 'Quality Gate: $(currentBuild.result)'"
             }
         } 
         stage('Deploy') {
